@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"> 
+    </script> 
+    <title>Parabole</title>
+</head>
+<body>
+    
+    <h2><strong>PARABOLE</strong></h2>
+
+    <div id="list">
+        <input type="text" placeholder="y" id="firstvalue"> <h4 style="color: black;">y =</h4>   
+        <input type="text" placeholder="a" id="secondvalue"> <h4 style="color: black;"> x&#178 + </h4>
+        <input type="text" placeholder="b" id="thirdvalue"> <h4 style="color: black;">x + </h4>
+        <input type="text" placeholder="c" id="fourthvalue">
+        <button type="button" onclick="getInputValue();"><em><bold>Get Solution</bold></em></button>
+    </div>
+    <br>
+
+    <section id="container">
+    <div id="intersectionx">
+    <h3><mark>Intersezione asse x</mark></h3>
+    <h3 style="color: black;" id="Solution1"></h3>
+    <h3 style="color: black;" id="Solution1number"></h3>
+    <br>
+    <h3 style="color: black;" id="Solution2"></h3>
+    <h3 style="color: black;" id="Solution2number"></h3>
+    </div>
+
+    <div id="intersectiony">
+        <h3 style="color: black;"><mark>Intersezione asse y</mark></h3>
+        <h3 style="color: black;" id="Solution10"></h3>
+        <h3 style="color: black;" id="Solution10number"></h3>
+        
+    </div>
+    <br><br><br><br><br><br><br><br><br>
+    <div id="vertice">
+        <h3 style="color: black;"><mark>Coordinate Vertice</mark></h3>
+        <h3 style="color: black;" id="Solution11"></h3>
+        <h3 style="color: black;" id="Solution11number"></h3>
+        <br>
+        <h3 style="color: black;" id="Solution22"></h3>
+        <h3 style="color: black;" id="Solution22number"></h3>
+        
+    </div>
+    <br><br>
+    <br>
+    <br>
+    <br><br>
+    <div id="fuoco">
+        <h3 style="color: black;"><mark>Coordinate del Fuoco</mark></h3>
+        <h3 style="color: black;" id="Solution110"></h3>
+        <h3 style="color: black;" id="Solution110number"></h3>
+        <br>
+        <h3 style="color: black;" id="Solution220"></h3>
+        <h3 style="color: black;" id="Solution220number"></h3>
+        
+    </div>
+    <br><br><br><br>
+    <br><br><br><br><br>
+    <div id="direttrice">
+        <h3 style="color: black;"><mark>Equazione della direttrice</mark></h3>
+        <h3 style="color: black;" id="Solution1100"></h3>
+        <h3 style="color: black;" id="Solution1100number"></h3>
+        <br>
+        <h3 style="color: black;" id="Solution2200"></h3>
+        <h3 style="color: black;" id="Solution2200number"></h3>
+        
+    </div>
+
+
+
+
+    </section>  
+
+    
+
+    <style>
+        
+        body {
+            background-color: #8EC5FC;
+            background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+
+        }
+
+        #list {
+           width: 65%;
+           display: flex;
+           justify-content: space-between;
+        }
+
+        #intersectionx {
+            width: 49.7%;           
+            float: left;
+            border-radius:15px;
+            background-color: white;
+            color: black;
+            box-shadow: 1px 1px 2px black, 0 0 25px grey, 0 0 5px black;
+            position: absolute;
+            left: 0;
+            display: none;
+              
+        }
+
+        #intersectiony {
+            background-color: white ;
+            width: 49.7%;    
+            float: left;
+            border-radius:15px;
+            color: black;
+            box-shadow: 1px 1px 2px black, 0 0 25px grey, 0 0 5px black;
+            position: absolute;
+            right: 0;
+            display: none;
+            
+        }
+
+        #vertice {
+            background-color: white ;
+            border-radius: 15px;
+            width: 49.7%;
+            right: 0;
+            position: absolute;
+            color: black;
+            box-shadow: 1px 1px 2px black, 0 0 25px grey, 0 0 5px black;
+            display: none;
+        }
+        
+        #fuoco {
+            border-radius: 15px;
+            background-color: white;
+            width: 49.7%;
+            position: absolute;
+            left: 0;
+            color: black;
+            box-shadow: 1px 1px 2px black, 0 0 25px grey, 0 0 5px black;
+            display: none;
+
+        }
+
+        #direttrice {
+            border-radius: 15px;
+            background-color: white;
+            width: 49.7%;
+            position: absolute;
+            right: 0;
+            color: black;
+            box-shadow: 1px 1px 2px black, 0 0 25px grey, 0 0 5px black;
+            display: none;
+
+        }
+    </style>
+
+    <script>
+    
+        function show(divId) { 
+            $("#" + divId).show(); 
+        } 
+
+        function positive(a, b, c){
+            return (-b + Math.sqrt(Math.pow(b, 2) -4*a*c)) / (2*a)
+        }
+
+        function negative(a, b, c){
+            return (-b - Math.sqrt(Math.pow(b, 2) -4*a*c)) / (2*a)
+        }
+
+        function getInputValue(){
+            var y = document.getElementById("firstvalue").value;
+            var a = document.getElementById("secondvalue").value;
+            var b = document.getElementById("thirdvalue").value;
+            var c = document.getElementById("fourthvalue").value;
+            
+            x1= positive(a, b, c);
+            x2= negative(a, b, c);
+            console.log(x1, x2);
+            console.log("One solution is:", x1, ";", "The other solution is:", x2, ";")
+            Solution1.innerHTML = "La prima intersezione è:";Solution1number.innerHTML = x1 ;
+            Solution2.innerHTML = "La seconda intersezione:";Solution2number.innerHTML = x2 ;
+            Solution10.innerHTML = "L'intersezione è:";Solution10number.innerHTML = c/y ;
+            Solution11.innerHTML = "La coordinata x è:";Solution11number.innerHTML = -b/(2*a) ;
+            Solution22.innerHTML = "La coordinata y è:";Solution22number.innerHTML = -(Math.pow(b, 2) -4*a*c)/(4*a) ;
+            Solution110.innerHTML = "La coordinata x è:";Solution110number.innerHTML = -b/(2*a) ;
+            Solution220.innerHTML = "La coordinata y è:";Solution220number.innerHTML = (1-(Math.pow(b, 2) -4*a*c))/(4*a) ;
+            Solution1100.innerHTML = "L'equazione della direttrice è:";Solution1100number.innerHTML = -(1+(Math.pow(b, 2) -4*a*c))/(4*a) ;
+
+            show('intersectionx');  
+            show('intersectiony');  
+            show('vertice');  
+            show('fuoco'); 
+            show('direttrice');
+
+        }
+
+
+    </script>
+</body>
+</html>
